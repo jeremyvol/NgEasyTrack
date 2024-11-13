@@ -4,21 +4,11 @@ import {
   Input,
   Output,
   // input,
-  output,
+  // output,
   // computed
 } from '@angular/core';
 
-// type User = {
-//   id: string;
-//   name: string;
-//   avatar: string;
-// }
-
-interface User {
-  id: string;
-  name: string;
-  avatar: string;
-}
+import { type User } from './user.model';
 
 @Component({
   selector: 'app-user',
@@ -29,10 +19,12 @@ interface User {
 export class UserComponent {
   // without signals
   @Input({ required: true }) user!: User;
+  @Input({ required: true }) selected!: boolean;
+  @Output() select = new EventEmitter<string>();
+
   // @Input({ required: true }) id!: string;
   // @Input({ required: true }) avatar!: string;
   // @Input({ required: true }) name!: string;
-  @Output() select = new EventEmitter<string>();
 
   // with signals
   // select = output<string>();
